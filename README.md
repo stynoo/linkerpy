@@ -1,5 +1,5 @@
 # linkerpy
-Some python scripts to make us of Linksprite's Linker Kit modules for Raspberry Pi 
+Some python scripts to make use of Linksprite's Linker Kit modules for Raspberry Pi 
 * **twoleds.py** - init and use two LEDs
 * **ledbar.py** - fun with the LED bar
 
