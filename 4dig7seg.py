@@ -4,7 +4,7 @@
 # It is tested on Linksprite's 4-Digit 7-Segment Module and is driving the TM1637 chip via RPi.GPIO
 
 # The TM1637 datasheet is available in Chineese but there it has some sample code.
-# Linksprite's code examples (ccp for arduino) did help as well.
+# Linksprite's code examples (cpp for arduino) did help as well.
 
 # External module imports
 import RPi.GPIO as GPIO
