@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+
+# This script is part of the linkerpy collection (https://github.com/stynoo/linkerpy)
+# It is tested on Linksprite's LED Modules via RPi.GPIO
+
 import RPi.GPIO as GPIO
 import time
 from random import randint
