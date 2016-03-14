@@ -12,7 +12,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(led_red,GPIO.OUT)
 GPIO.setup(led_purple,GPIO.OUT)
  
-print "\nLinkerPy: furiously randomized flashing of two leds...\n"
+print ("\nLinkerPy: furiously randomized flashing of two leds...\n")
  
 for loop_count in range(0, loop_iter):
 	GPIO.output(led_red,randint(0,1))

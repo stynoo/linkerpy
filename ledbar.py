@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+
+# This script is part of the linkerpy collection (https://github.com/stynoo/linkerpy)
+# It is tested on Linksprite's LED Bar Module and is driving the MY9221 chip via RPi.GPIO
+
 # External module imports
 import RPi.GPIO as GPIO
 import time
@@ -24,13 +29,13 @@ def send16bitData(data):
 			GPIO.output(led_bar,1)
 		else:
 			GPIO.output(led_bar,0)
-                clk_pin_state = not clk_pin_state
-                GPIO.output(led_bar+1,clk_pin_state)
+		clk_pin_state = not clk_pin_state
+		GPIO.output(led_bar+1,clk_pin_state)
 		data = (data<<1)
 		time.sleep(0.00001)
 
 
-def latchdata():    			#latch routine for MY9221 data exchange
+def latchdata():				#latch routine for MY9221 data exchange
         data_pin_state = False
         GPIO.output(led_bar,data_pin_state)
         time.sleep(0.0003)
@@ -65,16 +70,16 @@ def sendbar(ledstate=[0,0,0,0,0,0,0,0,0,0], delay=0):
 	time.sleep(delay)
 
 def tracer():
-        sendbar([0,0,0,0,0,0,0,0,0,0])
-        sendbar([9,0,0,0,0,0,0,0,0,0])
-        sendbar([8,9,0,0,0,0,0,0,0,0])
-        sendbar([7,8,9,0,0,0,0,0,0,0])
-        sendbar([6,7,8,9,0,0,0,0,0,0])
-        sendbar([5,6,7,8,9,0,0,0,0,0])
-        sendbar([4,5,6,7,8,9,0,0,0,0])
-        sendbar([3,4,5,6,7,8,9,0,0,0])
-        sendbar([2,3,4,5,6,7,8,9,0,0])
-        sendbar([1,2,3,4,5,6,7,8,9,0])
+	sendbar([0,0,0,0,0,0,0,0,0,0])
+	sendbar([9,0,0,0,0,0,0,0,0,0])
+	sendbar([8,9,0,0,0,0,0,0,0,0])
+	sendbar([7,8,9,0,0,0,0,0,0,0])
+	sendbar([6,7,8,9,0,0,0,0,0,0])
+	sendbar([5,6,7,8,9,0,0,0,0,0])
+	sendbar([4,5,6,7,8,9,0,0,0,0])
+	sendbar([3,4,5,6,7,8,9,0,0,0])
+	sendbar([2,3,4,5,6,7,8,9,0,0])
+	sendbar([1,2,3,4,5,6,7,8,9,0])
 	sendbar([1,1,2,3,4,5,6,7,8,9])
 	sendbar([1,1,1,2,3,4,5,6,7,8])
 	sendbar([2,1,1,1,2,3,4,5,6,7])
@@ -85,98 +90,98 @@ def tracer():
 	sendbar([7,6,5,4,3,2,1,1,1,2])
 	sendbar([8,7,6,5,4,3,2,1,1,1])
 	sendbar([9,8,7,6,5,4,3,2,1,1])
-        sendbar([0,9,8,7,6,5,4,3,2,1])
-        sendbar([0,0,9,8,7,6,5,4,3,2])
-        sendbar([0,0,0,9,8,7,6,5,4,3])
-        sendbar([0,0,0,0,9,8,7,6,5,4])
-        sendbar([0,0,0,0,0,9,8,7,6,5])
-        sendbar([0,0,0,0,0,0,9,8,7,6])
-        sendbar([0,0,0,0,0,0,0,9,8,7])
-        sendbar([0,0,0,0,0,0,0,0,9,8])
-        sendbar([0,0,0,0,0,0,0,0,0,9])
-        sendbar([0,0,0,0,0,0,0,0,0,0])
-        sendbar([0,0,0,0,0,0,0,0,0,9])
-        sendbar([0,0,0,0,0,0,0,0,9,8])
-        sendbar([0,0,0,0,0,0,0,9,8,7])
-        sendbar([0,0,0,0,0,0,9,8,7,6])
-        sendbar([0,0,0,0,0,9,8,7,6,5])
-        sendbar([0,0,0,0,9,8,7,6,5,4])
-        sendbar([0,0,0,9,8,7,6,5,4,3])
-        sendbar([0,0,9,8,7,6,5,4,3,2])
-        sendbar([0,9,8,7,6,5,4,3,2,1])
-        sendbar([9,8,7,6,5,4,3,2,1,1])
-        sendbar([8,7,6,5,4,3,2,1,1,1])
-        sendbar([7,6,5,4,3,2,1,1,1,2])
-        sendbar([6,5,4,3,2,1,1,1,2,3])
-        sendbar([5,4,3,2,1,1,1,2,3,4])
-        sendbar([4,3,2,1,1,1,2,3,4,5])
-        sendbar([3,2,1,1,1,2,3,4,5,6])
-        sendbar([2,1,1,1,2,3,4,5,6,7])
-        sendbar([1,1,1,2,3,4,5,6,7,8])
-        sendbar([1,1,2,3,4,5,6,7,8,9])
-        sendbar([1,2,3,4,5,6,7,8,9,0])
-        sendbar([2,3,4,5,6,7,8,9,0,0])
-        sendbar([3,4,5,6,7,8,9,0,0,0])
-        sendbar([4,5,6,7,8,9,0,0,0,0])
-        sendbar([5,6,7,8,9,0,0,0,0,0])
-        sendbar([6,7,8,9,0,0,0,0,0,0])
-        sendbar([7,8,9,0,0,0,0,0,0,0])
-        sendbar([8,9,0,0,0,0,0,0,0,0])
-        sendbar([9,0,0,0,0,0,0,0,0,0])
+	sendbar([0,9,8,7,6,5,4,3,2,1])
+	sendbar([0,0,9,8,7,6,5,4,3,2])
+	sendbar([0,0,0,9,8,7,6,5,4,3])
+	sendbar([0,0,0,0,9,8,7,6,5,4])
+	sendbar([0,0,0,0,0,9,8,7,6,5])
+	sendbar([0,0,0,0,0,0,9,8,7,6])
+	sendbar([0,0,0,0,0,0,0,9,8,7])
+	sendbar([0,0,0,0,0,0,0,0,9,8])
+	sendbar([0,0,0,0,0,0,0,0,0,9])
+	sendbar([0,0,0,0,0,0,0,0,0,0])
+	sendbar([0,0,0,0,0,0,0,0,0,9])
+	sendbar([0,0,0,0,0,0,0,0,9,8])
+	sendbar([0,0,0,0,0,0,0,9,8,7])
+	sendbar([0,0,0,0,0,0,9,8,7,6])
+	sendbar([0,0,0,0,0,9,8,7,6,5])
+	sendbar([0,0,0,0,9,8,7,6,5,4])
+	sendbar([0,0,0,9,8,7,6,5,4,3])
+	sendbar([0,0,9,8,7,6,5,4,3,2])
+	sendbar([0,9,8,7,6,5,4,3,2,1])
+	sendbar([9,8,7,6,5,4,3,2,1,1])
+	sendbar([8,7,6,5,4,3,2,1,1,1])
+	sendbar([7,6,5,4,3,2,1,1,1,2])
+	sendbar([6,5,4,3,2,1,1,1,2,3])
+	sendbar([5,4,3,2,1,1,1,2,3,4])
+	sendbar([4,3,2,1,1,1,2,3,4,5])
+	sendbar([3,2,1,1,1,2,3,4,5,6])
+	sendbar([2,1,1,1,2,3,4,5,6,7])
+	sendbar([1,1,1,2,3,4,5,6,7,8])
+	sendbar([1,1,2,3,4,5,6,7,8,9])
+	sendbar([1,2,3,4,5,6,7,8,9,0])
+	sendbar([2,3,4,5,6,7,8,9,0,0])
+	sendbar([3,4,5,6,7,8,9,0,0,0])
+	sendbar([4,5,6,7,8,9,0,0,0,0])
+	sendbar([5,6,7,8,9,0,0,0,0,0])
+	sendbar([6,7,8,9,0,0,0,0,0,0])
+	sendbar([7,8,9,0,0,0,0,0,0,0])
+	sendbar([8,9,0,0,0,0,0,0,0,0])
+	sendbar([9,0,0,0,0,0,0,0,0,0])
 
 def kitt():
 	led_delay=0.01
-        sendbar([1,1,1,2,4,5,0,0,0,0],led_delay)
-        sendbar([2,1,1,1,2,0,0,0,0,0],led_delay)
-        sendbar([3,2,1,1,1,2,0,0,0,0],led_delay)
-        sendbar([4,3,2,1,1,1,2,0,0,0],led_delay)
-        sendbar([5,4,3,2,1,1,1,2,0,0],led_delay)
-        sendbar([0,5,4,3,2,1,1,1,2,0],led_delay)
-        sendbar([0,0,5,4,3,2,1,1,1,2],led_delay)
-        sendbar([0,0,0,5,4,3,2,1,1,1],led_delay)
-        sendbar([0,0,0,0,5,4,3,2,1,1],led_delay)
+	sendbar([1,1,1,2,4,5,0,0,0,0],led_delay)
+	sendbar([2,1,1,1,2,0,0,0,0,0],led_delay)
+	sendbar([3,2,1,1,1,2,0,0,0,0],led_delay)
+	sendbar([4,3,2,1,1,1,2,0,0,0],led_delay)
+	sendbar([5,4,3,2,1,1,1,2,0,0],led_delay)
+	sendbar([0,5,4,3,2,1,1,1,2,0],led_delay)
+	sendbar([0,0,5,4,3,2,1,1,1,2],led_delay)
+	sendbar([0,0,0,5,4,3,2,1,1,1],led_delay)
+	sendbar([0,0,0,0,5,4,3,2,1,1],led_delay)
 	sendbar([0,0,0,0,0,5,2,1,1,1],led_delay)
 	sendbar([0,0,0,0,0,2,1,1,1,2],led_delay)
 	sendbar([0,0,0,0,2,1,1,1,2,3],led_delay)
 	sendbar([0,0,0,2,1,1,1,2,3,4],led_delay)
 	sendbar([0,0,2,1,1,1,2,3,4,5],led_delay)
 	sendbar([0,2,1,1,1,2,3,4,5,0],led_delay)
-        sendbar([2,1,1,1,2,3,4,5,0,0],led_delay)
+	sendbar([2,1,1,1,2,3,4,5,0,0],led_delay)
 	sendbar([1,1,1,2,3,4,5,0,0,0],led_delay)
 
 def scan_right():
 	led_delay=0
-        sendbar([1,0,0,0,0,0,0,0,0,0],led_delay)
-        sendbar([0,1,0,0,0,0,0,0,0,0],led_delay)
-        sendbar([0,0,1,0,0,0,0,0,0,0],led_delay)
-        sendbar([0,0,0,1,0,0,0,0,0,0],led_delay)
-        sendbar([0,0,0,0,1,0,0,0,0,0],led_delay)
-        sendbar([0,0,0,0,0,1,0,0,0,0],led_delay)
-        sendbar([0,0,0,0,0,0,1,0,0,0],led_delay)
-        sendbar([0,0,0,0,0,0,0,1,0,0],led_delay)
-        sendbar([0,0,0,0,0,0,0,0,1,0],led_delay)
-        sendbar([0,0,0,0,0,0,0,0,0,1],led_delay)
+	sendbar([1,0,0,0,0,0,0,0,0,0],led_delay)
+	sendbar([0,1,0,0,0,0,0,0,0,0],led_delay)
+	sendbar([0,0,1,0,0,0,0,0,0,0],led_delay)
+	sendbar([0,0,0,1,0,0,0,0,0,0],led_delay)
+	sendbar([0,0,0,0,1,0,0,0,0,0],led_delay)
+	sendbar([0,0,0,0,0,1,0,0,0,0],led_delay)
+	sendbar([0,0,0,0,0,0,1,0,0,0],led_delay)
+	sendbar([0,0,0,0,0,0,0,1,0,0],led_delay)
+	sendbar([0,0,0,0,0,0,0,0,1,0],led_delay)
+	sendbar([0,0,0,0,0,0,0,0,0,1],led_delay)
 
 def scan_left():
 	led_delay=0
-        sendbar([0,0,0,0,0,0,0,0,0,1],led_delay)
-        sendbar([0,0,0,0,0,0,0,0,1,0],led_delay)
-        sendbar([0,0,0,0,0,0,0,1,0,0],led_delay)
-        sendbar([0,0,0,0,0,0,1,0,0,0],led_delay)
-        sendbar([0,0,0,0,0,1,0,0,0,0],led_delay)
-        sendbar([0,0,0,0,1,0,0,0,0,0],led_delay)
-        sendbar([0,0,0,1,0,0,0,0,0,0],led_delay)
-        sendbar([0,0,1,0,0,0,0,0,0,0],led_delay)
-        sendbar([0,1,0,0,0,0,0,0,0,0],led_delay)
-        sendbar([1,0,0,0,0,0,0,0,0,0],led_delay)
+	sendbar([0,0,0,0,0,0,0,0,0,1],led_delay)
+	sendbar([0,0,0,0,0,0,0,0,1,0],led_delay)
+	sendbar([0,0,0,0,0,0,0,1,0,0],led_delay)
+	sendbar([0,0,0,0,0,0,1,0,0,0],led_delay)
+	sendbar([0,0,0,0,0,1,0,0,0,0],led_delay)
+	sendbar([0,0,0,0,1,0,0,0,0,0],led_delay)
+	sendbar([0,0,0,1,0,0,0,0,0,0],led_delay)
+	sendbar([0,0,1,0,0,0,0,0,0,0],led_delay)
+	sendbar([0,1,0,0,0,0,0,0,0,0],led_delay)
+	sendbar([1,0,0,0,0,0,0,0,0,0],led_delay)
 
 def chaos():
 	sendbar([randint(0,5),randint(0,5),randint(0,5),randint(0,5),randint(0,5),randint(0,5),randint(0,5),randint(0,5),randint(0,5),randint(0,5)])
 
 def flip():
-        led_delay=0
-        sendbar([1,0,1,0,1,0,1,0,1,0],led_delay)
-        sendbar([0,1,0,1,0,1,0,1,0,1],led_delay)
+	led_delay=0
+	sendbar([1,0,1,0,1,0,1,0,1,0],led_delay)
+	sendbar([0,1,0,1,0,1,0,1,0,1],led_delay)
 
 def sparkle():
 	ledstate=[0,0,0,0,0,0,0,0,0,0]
@@ -220,10 +225,10 @@ try:
 	for loop_count in range(0, 4): tracer()
   
 except KeyboardInterrupt:  
-	print "Interrupted by Keyboard..."  
+	print ("Interrupted by Keyboard...") 
   
 except:
-	print "An error or exception occurred!"  
+	print ("An error or exception occurred!")
   
 finally:
 	sendbar()
