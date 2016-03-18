@@ -7,21 +7,17 @@
 import RPi.GPIO as GPIO
 import spidev
 import time
-from random import randint
 
-sound_sensor = 0	# analog port A0 on the shield
+sound_sensor = 0		# analog port A0 on the shield
 led_purple = 12
 led_red = 20
-
-loop_iter=1000
-sleep_time=0.9
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(led_red,GPIO.OUT)
 GPIO.setup(led_purple,GPIO.OUT)
 
-spi = spidev.SpiDev() # create spi object
-spi.open(0, 0) # open spi port 0, device (CS) 1
+spi = spidev.SpiDev() 	# create spi object
+spi.open(0, 0) 			# open spi port 0, device (CS) 0
 
 def readadc(adcnum):
 	if adcnum >7 or adcnum <0:
@@ -51,4 +47,4 @@ except:
 
 finally:
 	time.sleep(0.5)
-	GPIO.cleanup() # this ensures a clean exit
+	GPIO.cleanup() 		# this ensures a clean exit
